@@ -5,10 +5,12 @@ import requests
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
+        # https://serverless-jet-six.vercel.app/api/define?word=python
         s = self.path
         url_components = parse.urlsplit(s)
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
+        print(f"the dic is: {dic}")
 
         if "word" in dic:
             url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
